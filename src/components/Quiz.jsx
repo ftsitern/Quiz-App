@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import questions from "../Questions";
 import Options from "./Options"
+import Score from './score-show';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,10 +24,24 @@ export default function Quiz() {
     const [Qnumber, setQnumber] = useState(0);
     const [responses, setresponses] = useState([]);
     const [qIndex, setqIndex] = useState([]);
+    const [showScore, setShowScore] = useState(false);
+    const [submit, setSubmit] = useState("save and next")
     const nextQues = () => {
-        setQnumber((preQnumber) => preQnumber + 1);
+        const next = Qnumber + 1;
+        if (next === questions.length - 1){
+            setSubmit("Submit")
+
+        }
+        if (next < questions.length )
+        {
+        setQnumber(next);
         document.getElementById(`${qIndex[Qnumber]}`).checked = false;
-        localStorage.getItem("key")
+       // localStorage.getItem("key")}
+        }
+        else {
+                setShowScore(true);
+
+        }
     }
 
     const prevQues = () => {
@@ -36,8 +51,8 @@ export default function Quiz() {
 
     const classes = useStyles();
     return (
-        <>
-            <div style={{backgroundColor: "#FFC107", height: 720}}>
+        <> {showScore ? <Score/>
+            : <div style={{backgroundColor: "#FFC107", height: 720}}>
             <h1 className="heading">FTS Quiz App</h1>
             <Paper elevation={3} className={classes.root}>
                 <div style={{textAlign: "center", position: "relative", bottom: 10}}>
@@ -62,13 +77,13 @@ export default function Quiz() {
                             className={classes.button} 
                             onClick={nextQues}
                         >
-                            Save and Next
+                            {submit}
                         </Button>
                         
                     </div> 
                 </div>
             </Paper>
-            </div>
+            </div>}
         </>
     )
 }
