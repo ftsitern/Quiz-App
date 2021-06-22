@@ -24,7 +24,7 @@ const questions = [
       'Object-Oriented',
       'Object-Based',
       'Assembly-language',
-      'High-leve',
+      'High-level',
     ],
     correct: 'Object-Based',
   },
