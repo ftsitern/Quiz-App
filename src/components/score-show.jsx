@@ -36,11 +36,11 @@ const Score = ({ responses }) => {
   const classes = useStyles();
   return (
     <div
-      style={{ backgroundColor: "#FFC107", height: 720, textAlign: "center" }}
+      style={{ backgroundColor: "#FFC107", height: 900, textAlign: "center" }}
     >
       <Paper elevation={3} className={classes.root}>
-        <div style={{}}>Submitted Successfuly</div>
-        <h4> Your Response</h4>
+        <div style={{fontWeight:"bolder",fontSize:22}}>Submitted Successfuly ! <span class="fas fa-grin-alt"></span></div><br/><br/>
+        <h3> Your Response</h3>
         <ol>
           {getScore(responses).scoreCard.map((item) => (
             <li>{item}</li>

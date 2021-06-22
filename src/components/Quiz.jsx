@@ -28,22 +28,26 @@ export default function Quiz() {
   const [showScore, setShowScore] = useState(false);
   const [submit, setSubmit] = useState("save and next");
   const nextQues = () => {
+    
     const next = Qnumber + 1;
     if (next === questions.length - 1) {
       setSubmit("Submit");
     }
+    
     if (next < questions.length) {
       setQnumber(next);
       console.log(qIndex);
       document.getElementById(`${qIndex[Qnumber]}`).checked = false;
-      // localStorage.getItem("key")}
+      localStorage.getItem("key")
     } else {
       setShowScore(true);
     }
   };
 
   const prevQues = () => {
+    if (Qnumber >= 1)
     setQnumber((preQnumber) => preQnumber - 1);
+    else alert("No any previous questions")
     // document.getElementById(`${qIndex[Qnumber]}`).checked = true;
   };
 
