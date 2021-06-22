@@ -1,7 +1,7 @@
 const questions = [
   {
     id: 1,
-    question: 'Which one of these is not a javascipt framework or library ?',
+    question: 'Which one of these is not a javascript framework or library ?',
     options: ['React', 'Angular', 'Laravel', 'jQuery', 'Vue'],
     correct: 'Laravel',
   },
