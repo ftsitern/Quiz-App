@@ -1,19 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import Welcome from "./Welcome";
-import Quiz from "./Quiz"
+import Quiz from "./Quiz";
 
 export default function Start() {
+  const [quizState, setquizState] = useState(false);
 
-    const [quizState, setquizState] = useState(false);
-    
+  const startquiz = () => {
+    setquizState(true);
+  };
 
-    const startquiz = () => {
-        setquizState(true);
-    }
-
-    return (
-        <>
-        {!quizState ? <Welcome startquiz = {startquiz} /> :<Quiz/>}
-        </>
-    )
+  return <>{!quizState ? <Welcome startquiz={startquiz} /> : <Quiz />}</>;
 }
