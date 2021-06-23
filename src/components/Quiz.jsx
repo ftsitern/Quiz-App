@@ -21,33 +21,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Quiz() {
-  // TODO: temp change revert it
   const [Qnumber, setQnumber] = useState(0);
   const [responses, setresponses] = useState([]);
   const [qIndex, setqIndex] = useState([]);
   const [showScore, setShowScore] = useState(false);
   const [submit, setSubmit] = useState("save and next");
+
   const nextQues = () => {
-    
     const next = Qnumber + 1;
     if (next === questions.length - 1) {
       setSubmit("Submit");
     }
-    
     if (next < questions.length) {
+      if (!document.getElementById(`${qIndex[Qnumber]}`)) {
+        alert("Select an Answer first 😉");
+        return;
+      }
       setQnumber(next);
-      console.log(qIndex);
+      console.log("Quiz", responses);
       document.getElementById(`${qIndex[Qnumber]}`).checked = false;
-      localStorage.getItem("key")
+      localStorage.getItem("key");
     } else {
       setShowScore(true);
     }
   };
 
   const prevQues = () => {
-    if (Qnumber >= 1)
-    setQnumber((preQnumber) => preQnumber - 1);
-    else alert("No any previous questions")
+    if (Qnumber >= 1) setQnumber((preQnumber) => preQnumber - 1);
+    else alert("No any previous questions");
     // document.getElementById(`${qIndex[Qnumber]}`).checked = true;
   };
 
@@ -56,7 +57,7 @@ export default function Quiz() {
     <>
       {" "}
       {showScore ? (
-        <Score responses={qIndex} />
+        <Score responses={responses} />
       ) : (
         <div style={{ backgroundColor: "#FFC107", height: 720 }}>
           <h1 className="heading">FTS Quiz App</h1>

@@ -5,7 +5,7 @@ export default function Options({ q, responses, index, qIndex }) {
     responses.push(q);
     qIndex.push(index);
     console.log(responses);
-    localStorage.setItem("key", responses);
+    localStorage.setItem("key", "responses");
   };
 
   return (

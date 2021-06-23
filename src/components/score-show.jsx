@@ -18,10 +18,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 const getScore = (responses) => {
   let totalScore = 0;
-  let scoreCard = responses.map((item) => {
-    let itemIndex = responses.indexOf(item);
-    let question = questions[itemIndex];
-    let optionSelected = question.options[item];
+  let scoreCard = responses.map((optionSelected) => {
+    let qNumber = responses.indexOf(optionSelected);
+    let question = questions[qNumber];
     let ans = "incorrect";
     if (optionSelected === question.correct) {
       totalScore += 1;
@@ -39,16 +38,20 @@ const Score = ({ responses }) => {
       style={{ backgroundColor: "#FFC107", height: 900, textAlign: "center" }}
     >
       <Paper elevation={3} className={classes.root}>
-        <div style={{fontWeight:"bolder",fontSize:22}}>Submitted Successfuly ! <span class="fas fa-grin-alt"></span></div><br/><br/>
-        <h3> Your Response</h3>
-        <ol>
+        <div style={{ fontWeight: "bolder", fontSize: 22 }}>
+          Submitted Successfuly ! 🙌
+        </div>
+        <br />
+        <br />
+        <h3> Your Response 👇</h3>
+        <ul>
           {getScore(responses).scoreCard.map((item) => (
             <li>{item}</li>
           ))}
-        </ol>
-        <h4>Your Final Score:</h4>
+        </ul>
         <br />
-        <h5>{getScore(responses).totalScore}</h5>
+        <br />
+        <h4>Your Final Score: {getScore(responses).totalScore}</h4>
       </Paper>
     </div>
   );
